@@ -15,23 +15,14 @@ vim.opt.laststatus = 0
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-local servers = {"clangd", "lua_ls"}
-
 vim.pack.add({
 	
-    { src = "https://github.com/blazkowolf/gruber-darker.nvim" },
-	{ src = "https://github.com/neovim/nvim-lspconfig"},
-	{ src = "https://github.com/stevearc/oil.nvim"},
-	{ src = "https://github.com/folke/trouble.nvim"},
-	{ src = "https://github.com/nvim-mini/mini.nvim"},
-	{ src = "https://github.com/mason-org/mason.nvim"},
-	{ src = "https://github.com/numtostr/comment.nvim"},
+        { src = "https://github.com/blazkowolf/gruber-darker.nvim" },
+		{ src = "https://github.com/nvim-mini/mini.nvim"},
+		{ src = "https://github.com/stevearc/oil.nvim"},
+		{ src = "https://github.com/numtostr/comment.nvim"},
 
 })
-
-
-require("trouble").setup()
-require("mason").setup()
 
 require("oil").setup({
 	columns = {
@@ -65,16 +56,13 @@ end
 
 no_italic("@string")
 no_italic("@string.documentation")
+no_italic("@string.comment")
 no_italic("String")
+
 
 require("mini.pick").setup()
 require("mini.pairs").setup()
 require("mini.surround").setup()
-
-
-for _, server in ipairs(servers) do
-		vim.lsp.enable(server)
-end
 
 
 vim.keymap.set("n", "<leader>e", ":Oil<CR>")
@@ -82,4 +70,3 @@ vim.keymap.set("n", "<leader>f", ":Pick files<CR>")
 vim.keymap.set("n", "<leader>h", ":Pick help<CR>")
 vim.keymap.set("n", "<leader>g", ":Pick grep_live<CR>")
 vim.keymap.set("n", "<leader>b", ":Pick buffers<CR>")
-vim.keymap.set("n", "<leader>q", ":Trouble diagnostics toggle<CR>")
